@@ -1,0 +1,37 @@
+body {
+    margin: 30px;
+}
+
+.code {
+
+}
+
+.no {
+
+}
+
+.name {
+
+}
+
+.rarelity {
+    text-align: center;
+}
+
+.rarelity.SR {
+    background-color: gold;
+}
+
+.rarelity.R {
+    background-color: red;
+    color: white;
+}
+
+.rarelity.UC {
+    background-color: gray;
+    color: white;
+}
+
+.rarelity.C {
+    background-color: white;
+}
