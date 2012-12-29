@@ -35,3 +35,10 @@ body {
 .rarelity.C {
     background-color: white;
 }
+
+#footer {
+    width: 100%;
+    position: fixed;
+    bottom: 2px;
+    text-align: center;
+}
