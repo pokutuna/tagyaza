@@ -1,21 +1,18 @@
   Tagyaza =
     init: ->
-      console.log('tagyaza')
       @cardDiv = $('#cards')
       $('#buttons').on 'click', 'button', @clickButton
 
     cardDiv: undefined
 
     clickButton: ->
-      console.log(@name)
       $.getJSON('/cards.json', set: @name).success (data)->
-        console.log(data)
-        cards = (new Card(card) for card in data)
+        cards = (new Card(card) for card in data.reverse())
         Tagyaza.appendCard(c) for c in cards
 
     appendCard: (card) ->
       setTimeout =>
-        card.toHtml().appendTo(@cardDiv)
+        card.toHtml().prependTo(@cardDiv)
       , 0
 
 

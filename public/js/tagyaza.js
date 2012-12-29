@@ -3,23 +3,21 @@ var Card, Tagyaza;
 
 Tagyaza = {
   init: function() {
-    console.log('tagyaza');
     this.cardDiv = $('#cards');
     return $('#buttons').on('click', 'button', this.clickButton);
   },
   cardDiv: void 0,
   clickButton: function() {
-    console.log(this.name);
     return $.getJSON('/cards.json', {
       set: this.name
     }).success(function(data) {
       var c, card, cards, _i, _len, _results;
-      console.log(data);
       cards = (function() {
-        var _i, _len, _results;
+        var _i, _len, _ref, _results;
+        _ref = data.reverse();
         _results = [];
-        for (_i = 0, _len = data.length; _i < _len; _i++) {
-          card = data[_i];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          card = _ref[_i];
           _results.push(new Card(card));
         }
         return _results;
@@ -35,7 +33,7 @@ Tagyaza = {
   appendCard: function(card) {
     var _this = this;
     return setTimeout(function() {
-      return card.toHtml().appendTo(_this.cardDiv);
+      return card.toHtml().prependTo(_this.cardDiv);
     }, 0);
   }
 };
