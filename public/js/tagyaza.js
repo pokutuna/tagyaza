@@ -3,11 +3,16 @@ var Card, Tagyaza;
 
 Tagyaza = {
   init: function() {
+    console.log('tagyaza');
     this.cardDiv = $('#cards');
     return $('#buttons').on('click', 'button', this.clickButton);
   },
   cardDiv: void 0,
   clickButton: function() {
+    var input;
+    input = $(".set-group." + this.name).find('input');
+    console.log(input.attr('value'));
+    input.attr('value', parseInt(input.attr('value'), 10) + 1);
     return $.getJSON('/cards.json', {
       set: this.name
     }).success(function(data) {

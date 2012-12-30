@@ -1,11 +1,15 @@
   Tagyaza =
     init: ->
+      console.log 'tagyaza'
       @cardDiv = $('#cards')
       $('#buttons').on 'click', 'button', @clickButton
 
     cardDiv: undefined
 
     clickButton: ->
+      input = $(".set-group.#{@name}").find('input')
+      console.log(input.attr('value'));
+      input.attr('value', parseInt(input.attr('value'), 10) + 1)
       $.getJSON('/cards.json', set: @name).success (data)->
         cards = (new Card(card) for card in data.reverse())
         Tagyaza.appendCard(c) for c in cards

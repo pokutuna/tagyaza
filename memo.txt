@@ -1,3 +1,14 @@
+[2012/12/30 9:55:50] たが: ・全部１パックずつあけるボタン
+むしろボタンはこれだけでもいい
+・結果をデッキリスト形式(txt)でダウンロード
+1 Remote Isle
+1 Quicksand
+1 Civic Guildmage
+1 Nomads en-Kor
+1 Devout Harpist
+1 Shrieking Drake
+・今表示してるのをhtmlでダウンロード（ブラウザからすぐ取得できるので優先度低）
+
 
 神話レア/レア：１　アンコモン：３　コモン：１１でランダムで出せれば十分
 
@@ -25,3 +36,9 @@ http://whisper.wisdom-guild.net/card/Hammerheim+Deadeye/
 [2012/12/30 9:39:58] たが: 再現しなくていい
 
 MIR以降のXないやつ
+
+5ED,6EDもいらない
+
+
+目的: http://d.hatena.ne.jp/tadolu/20121229#1356788855
+相場みれるほうがおもしろそう

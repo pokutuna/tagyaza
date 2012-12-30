@@ -1,5 +1,32 @@
-body {
-    margin: 30px;
+#sidebar {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    position: fixed;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 15px 0 30px 30px;
+    border-right: 1px solid #BBB;
+    box-shadow: 0 0 20px #CCC;
+}
+
+#content {
+    margin: 40px 0 50px 260px;
+}
+
+.symbol {
+    display: inline;
+}
+
+#buttons .setcode {
+    width: 3em;
+}
+
+#buttons .count {
+    width: 30px;
+    text-align: center;
 }
 
 .code {
@@ -18,27 +45,31 @@ body {
     text-align: center;
 }
 
-.rarelity.SR {
-    background-color: gold;
+.rarelity.MR {
+    background-color: #FF4D00;
+    color: white;
+    font-style: bold;
 }
 
 .rarelity.R {
-    background-color: red;
-    color: white;
+    background-color: gold;
 }
 
 .rarelity.UC {
-    background-color: gray;
-    color: white;
+    background-color: silver;
 }
 
 .rarelity.C {
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 #footer {
+    height: 1.5em;
     width: 100%;
     position: fixed;
-    bottom: 2px;
+    bottom: 0;
     text-align: center;
+    color: white;
+    background-color: black;
 }

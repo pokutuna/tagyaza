@@ -1,12 +1,20 @@
-h1 多賀ャザ
-#buttons
-  - sets = ["RTR","M13","AVR","DKA","ISD","M12","NPH","MBS","SOM","M11","ROE","WWK","ZEN","M10","ARB","CON","ALA","EVE","SHM","MOR","LRW","10E","FUT","PLC","TSP","CSP","DIS","GPT","RAV","9ED","SOK","BOK","CHK","5DN","DST","MRD","SCG","8ED","LGN","ONS","JUD","TOR","ODY","APC","7ED","PLS","INV","PCY","NEM","MMQ","UDS","ULG","USG","EXO","STH","TMP","WTH","VIS","MIR"]
-  - for set in sets do
-    button type="button" name=set #{set}
+.container-fluid
+  #sidebar
+    button.btn.btn-primary 1つずつあける
+    hr
+    #buttons
+      - sets = ["RTR","M13","AVR","DKA","ISD","M12","NPH","MBS","SOM","M11","ROE","WWK","ZEN","M10","ARB","CON","ALA","EVE","SHM","MOR","LRW","10E","FUT","PLC","TSP","DIS","GPT","RAV","9ED","SOK","BOK","CHK","5DN","DST","MRD","SCG","8ED","LGN","ONS","JUD","TOR","ODY","APC","7ED","PLS","INV","PCY","NEM","MMQ","UDS","ULG","USG","EXO","STH","TMP","WTH","VIS","MIR"]
+      - for set in sets do
+        .set-group.input-prepend.input-append(class=set)
+          span.add-on.setcode #{set}
+          /img.symbol src="#{'/img/sym/exp_sym_' + set + '.gif'}"/
+          input.count type='text' value=0 readonly='readonly'
+          button.btn(type='button' name=set)
+            i.icon-plus
 
-hr
-
-table#cards
+  #content.span8
+    h1 多賀ャザ
+    table#cards.table
 
 #footer
   span カードデータは
