@@ -29,14 +29,8 @@ class Card < ActiveRecord::Base
     cards = []
     Card.transaction {
       cards.push(get_rare_randomely(set_code))
-
-      3.times do
-        cards.push(get_uncommon(set_code))
-      end
-
-      11.times do
-        cards.push(get_common(set_code))
-      end
+      cards.push(*get_uncommon(set_code, 3))
+      cards.push(*get_common(set_code, 11))
     }
     cards
   end
@@ -56,12 +50,12 @@ class Card < ActiveRecord::Base
     Card.where(:set_code => set_code, :rarelity => 'レア').order('RANDOM()').first
   end
 
-  def self.get_uncommon(set_code)
-    Card.where(:set_code => set_code, :rarelity => 'アンコモン').order('RANDOM()').first
+  def self.get_uncommon(set_code, size)
+    Card.where(:set_code => set_code, :rarelity => 'アンコモン').order('RANDOM()').limit(size)
   end
 
-  def self.get_common(set_code)
-    Card.where(:set_code => set_code, :rarelity => 'コモン').order('RANDOM()').first
+  def self.get_common(set_code, size)
+    Card.where(:set_code => set_code, :rarelity => 'コモン').order('RANDOM()').limit(size)
   end
 
 end
