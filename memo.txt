@@ -18,3 +18,10 @@ http://whisper.wisdom-guild.net/cardlist/RTR.txt
 カードへのURLは
 http://whisper.wisdom-guild.net/card/Hammerheim+Deadeye/
 みたいに、英語名のを+に置換すればよさそう
+
+
+[2012/12/30 9:39:18] たが: http://mtgwiki.com/wiki/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%83%BB%E3%82%AB%E3%83%BC%E3%83%89
+一定確率で、パックの中のコモン枠が1枚キラカード枠になる、それはレアリティ関係ないから１パックに2枚レアの可能性がある、土地かどうかも関係ない
+[2012/12/30 9:39:58] たが: 再現しなくていい
+
+MIR以降のXないやつ
