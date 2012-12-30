@@ -36,7 +36,7 @@
 
     @rarelity_str_map: (jpn_text) ->
       switch jpn_text
-        when '神話レア' then 'SR'
+        when '神話レア' then 'MR'
         when 'レア' then 'R'
         when 'アンコモン' then 'UC'
         when 'コモン' then 'C'

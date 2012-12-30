@@ -59,7 +59,7 @@ Card = (function() {
   Card.rarelity_str_map = function(jpn_text) {
     switch (jpn_text) {
       case '神話レア':
-        return 'SR';
+        return 'MR';
       case 'レア':
         return 'R';
       case 'アンコモン':
