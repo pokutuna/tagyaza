@@ -3,25 +3,53 @@
       console.log 'tagyaza'
       @cardDiv = $('#cards')
       $('#buttons').on 'click', 'button', @clickButton
+      $('#open-all').on 'click', @openAll
+      $('#reset').on 'click', @reset
+      $('#output').on 'click', @output
+
+    cards: []
 
     cardDiv: undefined
 
     clickButton: ->
+      console.log(this)
+      dfd = $.Deferred()
       input = $(".set-group.#{@name}").find('input')
-      console.log(input.attr('value'));
       input.attr('value', parseInt(input.attr('value'), 10) + 1)
-      $.getJSON('/cards.json', set: @name).success (data)->
-        cards = (new Card(card) for card in data.reverse())
-        Tagyaza.appendCard(c) for c in cards
+      $.getJSON('/cards.json', set: @name).success (data) =>
+        for card_data in data.reverse()
+          card = new Card(card_data)
+          Tagyaza.cards.push(card)
+          card.toHtml().prependTo(Tagyaza.cardDiv)
 
-    appendCard: (card) ->
-      setTimeout =>
-        card.toHtml().prependTo(@cardDiv)
-      , 0
+        dfd.resolve()
+      return dfd.promise()
+
+    openAll: ->
+      buttons = $('button')
+      buttons.attr('disabled', true)
+      $('#loading').show()
+      requests = (Tagyaza.clickButton.apply(btn) for btn in $('#buttons button'))
+      $.when.apply($, requests).always ->
+        buttons.removeAttr('disabled')
+        $('#loading').hide()
+
+    reset: ->
+      if confirm('リセットしてよろしいですか？')
+        Tagyaza.cards = []
+        Tagyaza.cardDiv.empty()
+        $(ta).attr('value', 0) for ta in $('.set-group input')
+
+    output: ->
+      ids = (card.id for card in Tagyaza.cards)
+      return if ids.length == 0
+      $('#output-hidden').val(ids.join(','))
+      $('#output-submit').click()
 
 
   class Card
     constructor: (json) ->
+      @id       = json.card.id
       @set_code = json.card.set_code
       @set_no   = json.card.set_no
       @name_eng = json.card.name_eng

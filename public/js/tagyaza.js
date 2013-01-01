@@ -5,47 +5,93 @@ Tagyaza = {
   init: function() {
     console.log('tagyaza');
     this.cardDiv = $('#cards');
-    return $('#buttons').on('click', 'button', this.clickButton);
+    $('#buttons').on('click', 'button', this.clickButton);
+    $('#open-all').on('click', this.openAll);
+    $('#reset').on('click', this.reset);
+    return $('#output').on('click', this.output);
   },
+  cards: [],
   cardDiv: void 0,
   clickButton: function() {
-    var input;
+    var dfd, input,
+      _this = this;
+    console.log(this);
+    dfd = $.Deferred();
     input = $(".set-group." + this.name).find('input');
-    console.log(input.attr('value'));
     input.attr('value', parseInt(input.attr('value'), 10) + 1);
-    return $.getJSON('/cards.json', {
+    $.getJSON('/cards.json', {
       set: this.name
     }).success(function(data) {
-      var c, card, cards, _i, _len, _results;
-      cards = (function() {
-        var _i, _len, _ref, _results;
-        _ref = data.reverse();
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          card = _ref[_i];
-          _results.push(new Card(card));
-        }
-        return _results;
-      })();
+      var card, card_data, _i, _len, _ref;
+      _ref = data.reverse();
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        card_data = _ref[_i];
+        card = new Card(card_data);
+        Tagyaza.cards.push(card);
+        card.toHtml().prependTo(Tagyaza.cardDiv);
+      }
+      return dfd.resolve();
+    });
+    return dfd.promise();
+  },
+  openAll: function() {
+    var btn, buttons, requests;
+    buttons = $('button');
+    buttons.attr('disabled', true);
+    $('#loading').show();
+    requests = (function() {
+      var _i, _len, _ref, _results;
+      _ref = $('#buttons button');
       _results = [];
-      for (_i = 0, _len = cards.length; _i < _len; _i++) {
-        c = cards[_i];
-        _results.push(Tagyaza.appendCard(c));
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        btn = _ref[_i];
+        _results.push(Tagyaza.clickButton.apply(btn));
       }
       return _results;
+    })();
+    return $.when.apply($, requests).always(function() {
+      buttons.removeAttr('disabled');
+      return $('#loading').hide();
     });
   },
-  appendCard: function(card) {
-    var _this = this;
-    return setTimeout(function() {
-      return card.toHtml().prependTo(_this.cardDiv);
-    }, 0);
+  reset: function() {
+    var ta, _i, _len, _ref, _results;
+    if (confirm('リセットしてよろしいですか？')) {
+      Tagyaza.cards = [];
+      Tagyaza.cardDiv.empty();
+      _ref = $('.set-group input');
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        ta = _ref[_i];
+        _results.push($(ta).attr('value', 0));
+      }
+      return _results;
+    }
+  },
+  output: function() {
+    var card, ids;
+    ids = (function() {
+      var _i, _len, _ref, _results;
+      _ref = Tagyaza.cards;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        card = _ref[_i];
+        _results.push(card.id);
+      }
+      return _results;
+    })();
+    if (ids.length === 0) {
+      return;
+    }
+    $('#output-hidden').val(ids.join(','));
+    return $('#output-submit').click();
   }
 };
 
 Card = (function() {
 
   function Card(json) {
+    this.id = json.card.id;
     this.set_code = json.card.set_code;
     this.set_no = json.card.set_no;
     this.name_eng = json.card.name_eng;

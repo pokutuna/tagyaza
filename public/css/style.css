@@ -16,6 +16,24 @@
     margin: 40px 0 50px 260px;
 }
 
+#title {
+    display: inline-block;
+}
+
+#main-desc {
+    position: relative;
+    padding: 40px;
+    margin-bottom: 20px;
+    background-color: #DDD;
+    border-radius: 6px;
+}
+
+#output {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
 .symbol {
     display: inline;
 }
@@ -27,6 +45,10 @@
 #buttons .count {
     width: 30px;
     text-align: center;
+}
+
+.table td {
+    padding: 1px;
 }
 
 .code {
@@ -41,7 +63,7 @@
 
 }
 
-.rarelity {
+.table td.rarelity {
     text-align: center;
 }
 
@@ -72,4 +94,13 @@
     text-align: center;
     color: white;
     background-color: black;
+    z-index: 99999;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -110px;
+    display: none;
 }
