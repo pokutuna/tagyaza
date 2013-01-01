@@ -1,6 +1,5 @@
   Tagyaza =
     init: ->
-      console.log 'tagyaza'
       @cardDiv = $('#cards')
       $('#buttons').on 'click', 'button', @clickButton
       $('#open-all').on 'click', @openAll
@@ -12,7 +11,6 @@
     cardDiv: undefined
 
     clickButton: ->
-      console.log(this)
       dfd = $.Deferred()
       input = $(".set-group.#{@name}").find('input')
       input.attr('value', parseInt(input.attr('value'), 10) + 1)

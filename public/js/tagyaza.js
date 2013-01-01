@@ -3,7 +3,6 @@ var Card, Tagyaza;
 
 Tagyaza = {
   init: function() {
-    console.log('tagyaza');
     this.cardDiv = $('#cards');
     $('#buttons').on('click', 'button', this.clickButton);
     $('#open-all').on('click', this.openAll);
@@ -15,7 +14,6 @@ Tagyaza = {
   clickButton: function() {
     var dfd, input,
       _this = this;
-    console.log(this);
     dfd = $.Deferred();
     input = $(".set-group." + this.name).find('input');
     input.attr('value', parseInt(input.attr('value'), 10) + 1);
