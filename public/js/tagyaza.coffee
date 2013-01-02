@@ -74,7 +74,7 @@
       switch jpn_text
         when '神話レア' then 'MR'
         when 'レア' then 'R'
-        when 'アンコモン' then 'UC'
+        when 'アンコモン' then 'U'
         when 'コモン' then 'C'
         else throw new Error("there's no mapping #{jpn_text}")
 

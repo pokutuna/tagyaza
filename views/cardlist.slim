@@ -1,13 +1,13 @@
 .container-fluid
   #content.span12
     h1#title
-      a(href='/') 多賀ャザ
+      a(href='/') MOブースタージェネレーター
     table.table
       tr
         td 計 #{@cards.length}枚
         td MR: #{@counts[:mr]}枚
         td R: #{@counts[:r]}枚
-        td UC: #{@counts[:uc]}枚
+        td U: #{@counts[:uc]}枚
         td C: #{@counts[:c]}枚
     table#cards.table
       - for card in @cards do

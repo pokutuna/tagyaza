@@ -116,7 +116,7 @@ Card = (function() {
       case 'レア':
         return 'R';
       case 'アンコモン':
-        return 'UC';
+        return 'U';
       case 'コモン':
         return 'C';
       default:

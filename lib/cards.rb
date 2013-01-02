@@ -33,7 +33,7 @@ class Card < ActiveRecord::Base
     case rarelity
     when '神話レア' then 'MR'
     when 'レア' then 'R'
-    when 'アンコモン' then 'UC'
+    when 'アンコモン' then 'U'
     when 'コモン' then 'C'
     else raise ArgumentError('no reality string mapping')
     end

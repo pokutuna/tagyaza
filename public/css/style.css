@@ -16,10 +16,6 @@
     margin: 40px 0 50px 260px;
 }
 
-#title {
-    display: inline-block;
-}
-
 #main-desc {
     position: relative;
     padding: 40px;
@@ -86,7 +82,7 @@
     background-color: gold;
 }
 
-.rarelity.UC {
+.rarelity.U {
     background-color: silver;
 }
 
