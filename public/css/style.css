@@ -28,10 +28,19 @@
     border-radius: 6px;
 }
 
-#output {
+#output-box {
     position: absolute;
     right: 10px;
     bottom: 10px;
+}
+
+#cardlist-link-box {
+    display: inline-block;
+}
+
+#cardlist-link {
+    margin-right: 10px;
+    display: none;
 }
 
 .symbol {

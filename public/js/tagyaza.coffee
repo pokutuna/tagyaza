@@ -37,11 +37,17 @@
         Tagyaza.cards = []
         Tagyaza.cardDiv.empty()
         $(ta).attr('value', 0) for ta in $('.set-group input')
+        $('#cardlist-link').hide()
 
     output: ->
       ids = (card.id for card in Tagyaza.cards)
       return if ids.length == 0
-      $('#output-hidden').val(ids.join(','))
+      joined = ids.join(',')
+      cardlistUrl = [location.origin, '/cardlist?ids=', joined].join('')
+      $('#cardlist-link').slideDown()
+      $('#output-hidden').val(joined)
+      $('#cardlist-url').val(cardlistUrl)
+      $('#open-cardlist').attr('href', cardlistUrl)
       $('#output-submit').click()
 
 

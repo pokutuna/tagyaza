@@ -25,6 +25,20 @@ class Card < ActiveRecord::Base
       )
   end
 
+  def to_url
+    'http://whisper.wisdom-guild.net/card/' + name_eng.gsub(/\s/, '+')
+  end
+
+  def rarelity_string
+    case rarelity
+    when '神話レア' then 'MR'
+    when 'レア' then 'R'
+    when 'アンコモン' then 'UC'
+    when 'コモン' then 'C'
+    else raise ArgumentError('no reality string mapping')
+    end
+  end
+
   def self.open_pack(set_code)
     cards = []
     Card.transaction {

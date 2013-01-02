@@ -1,0 +1,24 @@
+.container-fluid
+  #content.span12
+    h1#title
+      a(href='/') 多賀ャザ
+    table.table
+      tr
+        td 計 #{@cards.length}枚
+        td MR: #{@counts[:mr]}枚
+        td R: #{@counts[:r]}枚
+        td UC: #{@counts[:uc]}枚
+        td C: #{@counts[:c]}枚
+    table#cards.table
+      - for card in @cards do
+        tr.card
+          td.code = card.set_code
+          td.no = sprintf('%03d', card.set_no)
+          td.name
+            a(href=card.to_url) = card.name_jpn
+          td.rarelity(class=card.rarelity_string) = card.rarelity_string
+
+#footer
+  span カードデータは
+  a href='http://www.wisdom-guild.net/' Wisdom Guild
+  span 様のものを利用しています

@@ -53,21 +53,20 @@ Tagyaza = {
     });
   },
   reset: function() {
-    var ta, _i, _len, _ref, _results;
+    var ta, _i, _len, _ref;
     if (confirm('リセットしてよろしいですか？')) {
       Tagyaza.cards = [];
       Tagyaza.cardDiv.empty();
       _ref = $('.set-group input');
-      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         ta = _ref[_i];
-        _results.push($(ta).attr('value', 0));
+        $(ta).attr('value', 0);
       }
-      return _results;
+      return $('#cardlist-link').hide();
     }
   },
   output: function() {
-    var card, ids;
+    var card, cardlistUrl, ids, joined;
     ids = (function() {
       var _i, _len, _ref, _results;
       _ref = Tagyaza.cards;
@@ -81,7 +80,12 @@ Tagyaza = {
     if (ids.length === 0) {
       return;
     }
-    $('#output-hidden').val(ids.join(','));
+    joined = ids.join(',');
+    cardlistUrl = [location.origin, '/cardlist?ids=', joined].join('');
+    $('#cardlist-link').slideDown();
+    $('#output-hidden').val(joined);
+    $('#cardlist-url').val(cardlistUrl);
+    $('#open-cardlist').attr('href', cardlistUrl);
     return $('#output-submit').click();
   }
 };
