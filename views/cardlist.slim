@@ -9,6 +9,10 @@
         td R: #{@counts[:r]}枚
         td U: #{@counts[:uc]}枚
         td C: #{@counts[:c]}枚
+        td
+          form(action='/decklist.txt' method='POST')
+            input#output-hidden(type='hidden' name='ids' value=@cards.map(&:id).join(','))/
+            input#output-submit(type='submit' value='download')
     table#cards.table
       - for card in @cards do
         tr.card

@@ -28,7 +28,7 @@
             input.span9#cardlist-url(readonly='true')
             a#open-cardlist.btn.btn-small(target='_blank' href='/cardlist')
               i.icon-share-alt
-        button#output.btn decklist
+        button#output.btn download
       form(action='/decklist.txt' method='POST' style='display: none;')
         input#output-hidden(type='hidden' name='ids' value='')/
         input#output-submit(type='submit')
