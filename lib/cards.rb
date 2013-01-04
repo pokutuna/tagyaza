@@ -43,8 +43,8 @@ class Card < ActiveRecord::Base
     cards = []
     Card.transaction {
       cards.push(get_rare_randomely(set_code))
-      cards.push(*get_uncommon(set_code, 3))
-      cards.push(*get_common(set_code, 11))
+      cards.push(*get_uncommon(set_code, 1))
+      cards.push(*get_common(set_code, 3))
     }
     cards
   end
